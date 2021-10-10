@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test DisplayCard Component with required props 1`] = `
+<div
+  className="card border-success mb-3"
+>
+  <div
+    className="card-header"
+  >
+    times attempted
+  </div>
+  <div
+    className="card-body text-success"
+  >
+    <h5
+      className="card-title h1"
+    >
+      16
+    </h5>
+  </div>
+</div>
+`;

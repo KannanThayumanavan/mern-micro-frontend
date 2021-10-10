@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Result Component should render correctly with required props 1`] = `
+<div
+  className="p-3"
+>
+  <h5
+    className="p-3"
+  >
+    You scored 
+    0
+     out of 
+    1
+  </h5>
+  <Button
+    buttonLabel="Play again"
+    buttonOnClick={[Function]}
+    type="success"
+  />
+</div>
+`;

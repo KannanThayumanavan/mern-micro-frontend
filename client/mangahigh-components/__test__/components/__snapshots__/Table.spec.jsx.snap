@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Table Component should render correctly with required props 1`] = `
+<table
+  className="table table-striped table-hover table-light"
+>
+  <thead>
+    <tr>
+      <th
+        key="Heading 1"
+        scope="col"
+      >
+        Heading 1
+      </th>
+      <th
+        key="Heading 2"
+        scope="col"
+      >
+        Heading 2
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="Row1 Data1,Row1 data2"
+    >
+      <td
+        key="Row1 Data1_0"
+      >
+        Row1 Data1
+      </td>
+      <td
+        key="Row1 data2_1"
+      >
+        Row1 data2
+      </td>
+    </tr>
+    <tr
+      key="Row2 Data1,Row2 data2"
+    >
+      <td
+        key="Row2 Data1_0"
+      >
+        Row2 Data1
+      </td>
+      <td
+        key="Row2 data2_1"
+      >
+        Row2 data2
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

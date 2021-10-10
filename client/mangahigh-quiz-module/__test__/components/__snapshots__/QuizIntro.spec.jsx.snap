@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test QuizIntro Component should render correctly with required props 1`] = `
+<div
+  className="p-3"
+>
+  <h5
+    className="p-3"
+  >
+    test header
+  </h5>
+  <Button
+    buttonLabel="Start Quiz"
+    buttonOnClick={[Function]}
+    type="success"
+  />
+</div>
+`;

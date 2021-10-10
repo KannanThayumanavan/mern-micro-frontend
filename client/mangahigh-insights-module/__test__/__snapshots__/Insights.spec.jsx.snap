@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Insights Component should render Insights component with succesfull fetch call 1`] = `
+<Insights>
+  <div
+    className="container-fluid p-3"
+  >
+    <div
+      className="row text-center"
+    >
+      <div
+        className="col-md-12"
+      >
+        <div
+          className="p-3 border bg-light"
+        >
+          <Summary
+            attempts={
+              Array [
+                Object {
+                  "_id": "6161b01c74f86b0917b418b6",
+                  "date_and_time": "2021-10-09T15:37:07.763Z",
+                  "score": 1,
+                  "total_questions": 3,
+                },
+                Object {
+                  "_id": "6161b01c74f86b0917b418c8",
+                  "date_and_time": "2021-10-09T15:07:07.763Z",
+                  "score": 3,
+                  "total_questions": 3,
+                },
+              ]
+            }
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col-md-6"
+              >
+                <Component
+                  highlight="2"
+                  summary="Number of times played"
+                >
+                  DisplayCard
+                </Component>
+              </div>
+              <div
+                className="col-md-6"
+              >
+                <Component
+                  highlight="2.0"
+                  summary="Average score"
+                >
+                  DisplayCard
+                </Component>
+              </div>
+            </div>
+          </Summary>
+          <AttemptsDataTable
+            attempts={
+              Array [
+                Object {
+                  "_id": "6161b01c74f86b0917b418b6",
+                  "date_and_time": "2021-10-09T15:37:07.763Z",
+                  "score": 1,
+                  "total_questions": 3,
+                },
+                Object {
+                  "_id": "6161b01c74f86b0917b418c8",
+                  "date_and_time": "2021-10-09T15:07:07.763Z",
+                  "score": 3,
+                  "total_questions": 3,
+                },
+              ]
+            }
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col-md-12"
+              >
+                <h4
+                  className="text-left"
+                >
+                  Historical Results 
+                  <small>
+                    (latest on top)
+                  </small>
+                </h4>
+                <Component
+                  tableData={
+                    Object {
+                      "header": Array [
+                        "#",
+                        "Date and time of play",
+                        "Score",
+                        "Total Questions",
+                      ],
+                      "rows": Array [
+                        Array [
+                          "1",
+                          "Sat, 09 Oct 2021 15:37:07 GMT",
+                          "1",
+                          "3",
+                        ],
+                        Array [
+                          "2",
+                          "Sat, 09 Oct 2021 15:07:07 GMT",
+                          "3",
+                          "3",
+                        ],
+                      ],
+                    }
+                  }
+                >
+                  Table
+                </Component>
+              </div>
+            </div>
+          </AttemptsDataTable>
+        </div>
+      </div>
+    </div>
+  </div>
+</Insights>
+`;
+
+exports[`Test Insights Component should render loading state correctly 1`] = `
+<div
+  className="container-fluid p-3"
+>
+  <div
+    className="row text-center"
+  >
+    <div
+      className="col-md-12"
+    >
+      <div
+        className="spinner-border text-primary"
+        role="status"
+      >
+        <span
+          className="visually-hidden"
+        >
+          Loading...
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

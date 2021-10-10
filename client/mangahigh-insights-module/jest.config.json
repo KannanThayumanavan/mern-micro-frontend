@@ -1,0 +1,5 @@
+{
+  "setupFiles": ["<rootDir>/setupTest.js"],
+  "testEnvironment": "jsdom",
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
+}

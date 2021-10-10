@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MultiOptions Component with required props 1`] = `
+Array [
+  <div
+    className="form-check form-check-inline p-3"
+    key="test_multi_option_Option 1"
+    onChange={[Function]}
+  >
+    <input
+      className="form-check-input"
+      id="Option 1"
+      name="test_multi_option"
+      type="radio"
+      value="Option 1"
+    />
+    <label
+      className="form-check-label"
+      htmlFor="Option 1"
+    >
+      Option 1
+    </label>
+  </div>,
+  <div
+    className="form-check form-check-inline p-3"
+    key="test_multi_option_Option 2"
+    onChange={[Function]}
+  >
+    <input
+      className="form-check-input"
+      id="Option 2"
+      name="test_multi_option"
+      type="radio"
+      value="Option 2"
+    />
+    <label
+      className="form-check-label"
+      htmlFor="Option 2"
+    >
+      Option 2
+    </label>
+  </div>,
+]
+`;

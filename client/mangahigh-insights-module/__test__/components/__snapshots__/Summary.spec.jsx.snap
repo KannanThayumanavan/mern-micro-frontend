@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Summary Component should render correctly with required props 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-6"
+  >
+    <Component
+      highlight="2"
+      summary="Number of times played"
+    />
+  </div>
+  <div
+    className="col-md-6"
+  >
+    <Component
+      highlight="2.0"
+      summary="Average score"
+    />
+  </div>
+</div>
+`;

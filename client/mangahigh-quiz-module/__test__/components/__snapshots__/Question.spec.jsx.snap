@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Question Component Test navigation between quiz questions should render correctly with required props 1`] = `
+<div
+  className="p-3"
+>
+  <h5>
+    test question 1
+  </h5>
+  <MultiOptions
+    getSelectedValue={[MockFunction]}
+    groupName="test_id"
+    options={
+      Array [
+        "test option 1",
+        "test option 2",
+      ]
+    }
+  />
+  <div
+    className="p-3"
+  >
+    <Button
+      buttonLabel="Next"
+      buttonOnClick={[Function]}
+      type="primary"
+    />
+  </div>
+</div>
+`;
+
+exports[`Test Question Component Test quiz submission and result section should show Submit button at end of Quiz 1`] = `
+<div
+  className="p-3"
+>
+  <h5>
+    test question 1
+  </h5>
+  <MultiOptions
+    getSelectedValue={[MockFunction]}
+    groupName="test_id"
+    options={
+      Array [
+        "test option 1",
+        "test option 2",
+      ]
+    }
+  />
+  <div
+    className="p-3"
+  >
+    <Button
+      buttonLabel="Submit"
+      buttonOnClick={[Function]}
+      type="primary"
+    />
+  </div>
+</div>
+`;

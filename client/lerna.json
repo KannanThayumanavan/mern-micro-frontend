@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "mangahigh-libs", 
+    "mangahigh-components", 
+    "mangahigh-insights-module",
+    "mangahigh-quiz-module",
+    "mangahigh-root-container"
+  ],
+  "version": "0.0.1"
+}
