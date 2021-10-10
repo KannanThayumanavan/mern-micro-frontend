@@ -77,7 +77,8 @@
 
   It is a pure host.
       
-  ### run test and eslint in mangahigh-componets, mangahigh-insights-module, mangahigh-quiz-module
+  ### Run test and eslint 
+    (mangahigh-componets, mangahigh-insights-module, mangahigh-quiz-module)
   
     cd <module-name>
     npm run test
@@ -98,25 +99,25 @@
 
   ### What aspects of your solution you’re most happy with
   
-    MERN and Webpack Federation
+   MERN and Webpack Federation
     
   ### What you would do differently or improve on, given more time
   
-    i18n Support
+   i18n Support
     
-    Error boundary, SSR, CSS modules
+   Error boundary, SSR, CSS modules
     
-    Jest browser snapshot testing
+   Jest browser snapshot testing
     
-    Webpack independent test build based unit testing - https://scriptedalchemy.medium.com/module-federation-how-do-we-create-unit-tests-for-it-bd0d73c999bc
+   Webpack independent test build based unit testing - https://scriptedalchemy.medium.com/module-federation-how-do-we-create-unit-tests-for-it-bd0d73c999bc
     
-    eslint with full config (only syntax check included now)
+   eslint with full config (only syntax check included now)
     
-    Encryption and decryption of data (stored in MongoDB)
+   Encryption and decryption of data (stored in MongoDB)
     
   ### Roughly how long spent in total
   
-    6 - 8 hours, that also includes a bit of learning, machine setup
+   6 - 8 hours, that also includes a bit of learning, machine setup
     
     
     
