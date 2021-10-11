@@ -103,7 +103,7 @@
     
   ### What you would do differently or improve on, given more time
   
-   i18n Support
+   i18n Support, Code Spliting, Performance Improvement (ex - useReducer instead of useState)
     
    Error boundary, SSR, CSS modules
     
