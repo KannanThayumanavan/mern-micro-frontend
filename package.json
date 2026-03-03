@@ -1,0 +1,108 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "Production application with pinned dependencies",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "audit": "npm audit --audit-level=high",
+    "audit:fix": "npm audit fix"
+  },
+  "dependencies": {
+    "axios": "1.6.8",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.22.3",
+    "react-scripts": "5.0.1",
+    "web-vitals": "3.5.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "15.0.2",
+    "@testing-library/user-event": "14.5.2",
+    "eslint": "8.57.0",
+    "eslint-plugin-react": "7.34.1",
+    "eslint-plugin-react-hooks": "4.6.0"
+  },
+  "overrides": {
+    "nth-check": "2.1.1",
+    "loader-utils": "2.0.4",
+    "axios": "1.6.8",
+    "react": "18.2.0",
+    "react-dom": {
+      "react": "18.2.0"
+    },
+    "css-select": {
+      "nth-check": "2.1.1"
+    },
+    "svgo": {
+      "css-select": {
+        "nth-check": "2.1.1"
+      }
+    },
+    "@svgr/webpack": {
+      "svgo": {
+        "css-select": {
+          "nth-check": "2.1.1"
+        }
+      }
+    },
+    "resolve-url-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "sass-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "babel-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "file-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "url-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "css-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "style-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "postcss-loader": {
+      "loader-utils": "2.0.4"
+    },
+    "source-map-loader": {
+      "loader-utils": "2.0.4"
+    }
+  },
+  "resolutions": {
+    "nth-check": "2.1.1",
+    "loader-utils": "2.0.4",
+    "axios": "1.6.8",
+    "react": "18.2.0",
+    "css-select/nth-check": "2.1.1",
+    "svgo/css-select/nth-check": "2.1.1",
+    "**/nth-check": "2.1.1",
+    "**/loader-utils": "2.0.4",
+    "**/axios": "1.6.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
