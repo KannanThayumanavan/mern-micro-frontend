@@ -1,0 +1,128 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "server",
+      "version": "1.0.0",
+      "license": "ISC",
+      "dependencies": {
+        "bcrypt": "5.1.0",
+        "compression": "1.7.4",
+        "cookie-parser": "1.4.6",
+        "cors": "2.8.5",
+        "dotenv": "16.0.3",
+        "express": "4.18.2",
+        "express-rate-limit": "6.7.0",
+        "express-validator": "7.0.1",
+        "helmet": "6.0.1",
+        "jsonwebtoken": "8.5.1",
+        "mongoose": "7.2.2",
+        "morgan": "1.10.0",
+        "multer": "1.4.5-lts.1",
+        "nodemailer": "6.9.3",
+        "uuid": "9.0.0",
+        "winston": "3.8.2"
+      },
+      "devDependencies": {
+        "jest": "29.5.0",
+        "nodemon": "2.0.22",
+        "supertest": "6.3.3"
+      }
+    },
+    "node_modules/@ampproject/remapping": {
+      "version": "2.2.1",
+      "resolved": "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.1.tgz",
+      "integrity": "sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==",
+      "dev": true,
+      "dependencies": {
+        "@jridgewell/gen-mapping": "^0.3.0",
+        "@jridgewell/trace-mapping": "^0.3.9"
+      },
+      "engines": {
+        "node": ">=6.0.0"
+      }
+    },
+    "node_modules/@babel/code-frame": {
+      "version": "7.21.4",
+      "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.21.4.tgz",
+      "integrity": "sha512-LYvhNKfwWSPpocw8GI7gpK2nq3HSDuEPC/uSYaALSJu9xjsalaaYFOq0Pwt5KmVqwEbZlDu81aLXwBOmD/Fv9g==",
+      "dev": true,
+      "dependencies": {
+        "@babel/highlight": "^7.18.6"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/compat-data": {
+      "version": "7.22.3",
+      "resolved": "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.22.3.tgz",
+      "integrity": "sha512-0S9TQMmDHlqAZ2ITT95irXKfxN9bncq8ZCoJhun3nHL/lLUxd2NKBJYoNGWH7S0hz7M9dn5NcVApkMbzmbdkA==",
+      "dev": true,
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/core": {
+      "version": "7.22.2",
+      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.22.2.tgz",
+      "integrity": "sha512-BcStgZMXwTaIKXoKgLAV5KvXTIwFMLmza9Z9WMAD9/hVqHXpJ5HkQ6dzSAQe1OBVT+86WEOfHR+2/2KMDwZGg==",
+      "dev": true,
+      "dependencies": {
+        "@ampproject/remapping": "^2.2.0",
+        "@babel/code-frame": "^7.21.4",
+        "@babel/generator": "^7.22.0",
+        "@babel/helper-compilation-targets": "^7.22.1",
+        "@babel/helper-module-transforms": "^7.22.1",
+        "@babel/helpers": "^7.22.0",
+        "@babel/parser": "^7.22.0",
+        "@babel/template": "^7.21.9",
+        "@babel/traverse": "^7.22.1",
+        "@babel/types": "^7.22.0",
+        "convert-source-map": "^1.7.0",
+        "debug": "^4.1.0",
+        "gensync": "^1.0.0-beta.2",
+        "json5": "^2.2.2",
+        "semver": "^6.3.0"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/generator": {
+      "version": "7.22.3",
+      "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.22.3.tgz",
+      "integrity": "sha512-C6+AKMF9QLKP1BUBS9GKQE0OMjDGMpLFMkFCHfqjdGyZTeNmtFdKSQfnD51o3b7bJOfSobNFEEyB4FuJFQXyw==",
+      "dev": true,
+      "dependencies": {
+        "@babel/types": "^7.22.3",
+        "@jridgewell/gen-mapping": "^0.3.2",
+        "@jridgewell/trace-mapping": "^0.3.17",
+        "jsesc": "^2.5.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-compilation-targets": {
+      "version": "7.22.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.22.1.tgz",
+      "integrity": "sha512-Rqx13UM3yVB5q0D/KwQ8+SPfX/+Rnsy1Lw1k/UwOC4KC6qrzIQoY3lYnBu5EHKBlEHHcj0M0W8ltPSkD8rqfsA==",
+      "dev": true,
+      "dependencies": {
+        "@babel/compat-data": "^7.22.0",
+        "@babel/helper-validator-identifier": "^7.19.1",
+        "browserslist": "^4.21.3",
+        "lru-cache": "^5.1.1",
+        "semver": "^6.3.0"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-environment-visitor": {
+      "version": "7.22.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-environment-visitor/-/helper-environment-visitor-7.22.1.tgz
