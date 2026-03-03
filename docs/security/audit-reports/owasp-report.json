@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""
+OWASP Dependency-Check Report Generator
+Jira: SCRUM-29
+File: docs/security/audit-reports/owasp-report.json generator
+
+Generates OWASP-aligned CVE findings report from dependency analysis
+across all three workspaces following Defense-in-Depth remediation strategy.
+"""
+
+import json
+import os
+import subprocess
+import sys
+import hashlib
+import datetime
+import logging
+from pathlib import Path
+from typing import Any, Optional
+from dataclasses import dataclass, field, asdict
+from enum import Enum
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
+logger = logging.getLogger("owasp-report-generator")
+
+
+class Severity(str, Enum):
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+    INFO = "INFO"
+    NONE = "NONE"
+
+
+class RemediationTrack(str, Enum):
+    DEPENDENCY_SUPPLY_CHAIN = "dependency_supply_chain_patching"
+    RUNTIME_CONFIGURATION = "runtime_configuration_hardening"
+    AUTH_CRYPTOGRAPHY = "authentication_cryptography_uplift"
+
+
+class RemediationStatus(str, Enum):
+    OPEN = "OPEN"
+    IN_PROGRESS = "IN_PROGRESS"
+    RESOLVED = "RESOLVED"
+    ACCEPTED_RISK = "ACCEPTED_RISK"
+    FALSE_POSITIVE = "FALSE_POSITIVE"
+
+
+@dataclass
+class CWE:
+    id: str
+    name: str
+    description: str
+
+
+@dataclass
+class CVSS:
+    version: str
+    vector_string: str
+    base_score: float
+    base_severity: str
+    exploitability_score: float
+    impact_score: float
+    attack_vector: str
+    attack_complexity: str
+    privileges_required: str
+    user_interaction: str
+    scope: str
+    confidentiality_impact: str
+    integrity_impact: str
+    availability_impact: str
+
+
+@dataclass
+class Reference:
+    url: str
+    name: str
+    source: str
+
+
+@dataclass
+class AffectedVersion:
+    version_start_including: Optional[str]
+    version_end_excluding: Optional[str]
+    version_end_including: Optional[str]
+
+
+@dataclass
+class Vulnerability:
+    cve_id: str
+    description: str
+    severity: str
+    cvss_v3: Optional[CVSS]
+    cvss_v2: Optional[CVSS]
+    cwes: list[CWE]
+    references: list[Reference]
+    published_date: str
+    last_modified_date: str
+    affected_versions: list[AffectedVersion]
+    remediation_track: str
+    remediation_status: str
+    remediation_notes: str
+    patch_available: bool
+    patch_version: Optional[str]
+    exploit_available: bool
+    exploit_maturity: str
+    false_positive: bool
+    suppressed: bool
+    suppression_reason: Optional[str]
+
+
+@dataclass
+class Dependency:
+    file_path: str
+    file_name: str
+    sha256: str
+    sha1: str
+    md5: str
+    package_name: str
+    package_version: str
+    package_ecosystem: str
+    workspace: str
+    description: Optional[str]
+    license: Optional[str]
+    vulnerabilities: list[Vulnerability]
+    vulnerability_count: int = field(init=False)
+    highest_severity: str = field(init=False)
+
+    def __post_init__(self):
+        self.vulnerability_count = len(self.vulnerabilities)
+        severity_order = [
+            Severity.CRITICAL,
+            Severity.HIGH,
+            Severity.MEDIUM,
+            Severity.LOW,
+            Severity.INFO,
+            Severity.NONE,
+        ]
+        if self.vulnerabilities:
+            severities = [v.severity for v in self.vulnerabilities]
+            for sev in severity_order:
+                if sev.value in severities:
+                    self.highest_severity = sev.value
+                    break
+            else:
+                self.highest_severity = Severity.NONE.value
+        else:
+            self.highest_severity = Severity.NONE.value
+
+
+@dataclass
+class WorkspaceSummary:
+    workspace_name: str
+    workspace_path: str
+    package_ecosystem: str
+    total_dependencies: int
+    vulnerable_dependencies: int
+    total_vulnerabilities: int
+    critical_count: int
+    high_count: int
+    medium_count: int
+    low_count: int
+    info_count: int
+    risk_score: float
+    scan_timestamp: str
+
+
+@dataclass
+class RemediationPhase:
+    phase_number: int
+    phase_name: str
+    branch_name: str
+    track: str
+    severity_tier: list[str]
+    description: str
+    validation_gate: str
+    estimated_effort_hours: int
+    dependencies_affected: list[str]
+    status: str
+    completion_percentage: int
+
+
+@dataclass
+class SolutionApproach:
+    strategy: str
+    pattern: str
+    branching_strategy: str
+    tracks: list[str]
+    phases: list[RemediationPhase]
+    rollback_strategy: str
+    validation_requirements: list[str]
+
+
+@dataclass
+class OWASPReport:
+    report_schema_version: str
+    report_format: str
+    report_generated_at: str
+    report_generated_by: str
+    jira_ticket: str
+    scan_info: dict[str, Any]
+    solution_approach: dict[str, Any]
+    workspace_summaries: list[WorkspaceSummary]
+    dependencies: list[Dependency]
+    executive_summary: dict[str, Any]
+    remediation_plan: dict[str, Any]
+    compliance_mapping: dict[str, Any]
+    suppression_rules: list[dict[str, Any]]
+    false_positives: list[dict[str, Any]]
+
+
+def compute_file_hash(file_path: str, algorithm: str) -> str:
+    """Compute cryptographic hash of a file."""
+    h = hashlib.new(algorithm)
+    try:
+        with open(file_path, "rb") as f:
+            for chunk in iter(lambda: f.read(8192), b""):
+                h.update(chunk)
+        return h.hexdigest()
+    except (OSError, IOError):
+        return f"<unable-to-read-{algorithm}>"
+
+
+def get_workspace_paths() -> list[dict[str, str]]:
+    """Return the three workspace definitions."""
+    return [
+        {
+            "name": "backend-api",
+            "path": "services/backend-api",
+            "ecosystem": "pip",
+            "requirements_file": "requirements.txt",
+            "lock_file": "requirements.lock",
+        },
+        {
+            "name": "frontend-web",
+            "path": "services/frontend-web",
+            "ecosystem": "npm",
+            "requirements_file": "package.json",
+            "lock_file": "package-lock.json",
+        },
+        {
+            "name": "data-pipeline",
+            "path": "services/data-pipeline",
+            "ecosystem": "pip",
+            "requirements_file": "requirements.txt",
+            "lock_file": "Pipfile.lock",
+        },
+    ]
+
+
+def build_cvss_v3(
+    vector: str,
+    base_score: float,
+    severity: str,
+    exploitability: float,
+    impact: float,
+    av: str,
+    ac: str,
+    pr: str,
+    ui: str,
+    scope: str,
+    conf: str,
+    integ: str,
+    avail: str,
+) -> CVSS:
+    return CVSS(
+        version="3.1",
+        vector_string=vector,
+        base
