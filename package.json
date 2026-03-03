@@ -1,0 +1,45 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "Production application with hardened dependency management",
+  "private": true,
+  "save-exact": true,
+  "save-prefix": "",
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "eslint .",
+    "audit": "npm audit --audit-level=moderate",
+    "audit:fix": "npm audit fix",
+    "lockfile:verify": "npm ci --dry-run",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "axios": "1.8.2"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "jest": "29.7.0"
+  },
+  "overrides": {
+    "axios": "1.8.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "config": {
+    "unsafe-perm": false
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "funding": null,
+  "license": "UNLICENSED"
+}
