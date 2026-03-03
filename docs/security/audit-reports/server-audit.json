@@ -1,0 +1,196 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "lodash": {
+      "name": "lodash",
+      "severity": "critical",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1179,
+          "name": "lodash",
+          "dependency": "lodash",
+          "title": "Prototype Pollution in lodash",
+          "url": "https://npmjs.com/advisories/1179",
+          "severity": "critical",
+          "cwe": ["CWE-1321"],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<4.17.21"
+        }
+      ],
+      "effects": ["body-parser", "express"],
+      "range": "<4.17.21",
+      "nodes": ["node_modules/lodash"],
+      "fixAvailable": {
+        "name": "lodash",
+        "version": "4.17.21",
+        "isSemVerMajor": false
+      }
+    },
+    "jsonwebtoken": {
+      "name": "jsonwebtoken",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1784,
+          "name": "jsonwebtoken",
+          "dependency": "jsonwebtoken",
+          "title": "jsonwebtoken vulnerable to signature validation bypass due to insecure default algorithm in jwt.verify()",
+          "url": "https://npmjs.com/advisories/1784",
+          "severity": "high",
+          "cwe": ["CWE-327", "CWE-347"],
+          "cvss": {
+            "score": 7.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+          },
+          "range": "<9.0.0"
+        },
+        {
+          "source": 1785,
+          "name": "jsonwebtoken",
+          "dependency": "jsonwebtoken",
+          "title": "jsonwebtoken unrestricted key type could lead to legacy keys usage",
+          "url": "https://npmjs.com/advisories/1785",
+          "severity": "medium",
+          "cwe": ["CWE-327"],
+          "cvss": {
+            "score": 6.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+          },
+          "range": "<9.0.0"
+        }
+      ],
+      "effects": [],
+      "range": "<9.0.0",
+      "nodes": ["node_modules/jsonwebtoken"],
+      "fixAvailable": {
+        "name": "jsonwebtoken",
+        "version": "9.0.2",
+        "isSemVerMajor": true
+      }
+    },
+    "express": {
+      "name": "express",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1801,
+          "name": "express",
+          "dependency": "express",
+          "title": "Express.js Open Redirect in malformed URLs",
+          "url": "https://npmjs.com/advisories/1801",
+          "severity": "high",
+          "cwe": ["CWE-601"],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          },
+          "range": "<4.19.2"
+        }
+      ],
+      "effects": [],
+      "range": "<4.19.2",
+      "nodes": ["node_modules/express"],
+      "fixAvailable": {
+        "name": "express",
+        "version": "4.19.2",
+        "isSemVerMajor": false
+      }
+    },
+    "helmet": {
+      "name": "helmet",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1756,
+          "name": "helmet",
+          "dependency": "helmet",
+          "title": "helmet vulnerable to missing Content-Security-Policy header in certain configurations",
+          "url": "https://npmjs.com/advisories/1756",
+          "severity": "moderate",
+          "cwe": ["CWE-693"],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+          },
+          "range": "<7.0.0"
+        }
+      ],
+      "effects": [],
+      "range": "<7.0.0",
+      "nodes": ["node_modules/helmet"],
+      "fixAvailable": {
+        "name": "helmet",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "bcrypt": {
+      "name": "bcrypt",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1690,
+          "name": "bcrypt",
+          "dependency": "bcrypt",
+          "title": "bcrypt vulnerable to ReDoS via password field",
+          "url": "https://npmjs.com/advisories/1690",
+          "severity": "moderate",
+          "cwe": ["CWE-400"],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<5.0.0"
+        }
+      ],
+      "effects": [],
+      "range": "<5.0.0",
+      "nodes": ["node_modules/bcrypt"],
+      "fixAvailable": {
+        "name": "bcrypt",
+        "version": "5.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    "multer": {
+      "name": "multer",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1712,
+          "name": "multer",
+          "dependency": "multer",
+          "title": "multer vulnerable to path traversal in filename",
+          "url": "https://npmjs.com/advisories/1712",
+          "severity": "moderate",
+          "cwe": ["CWE-22"],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+          },
+          "range": "<1.4.5-lts.1"
+        }
+      ],
+      "effects": [],
+      "range": "<1.4.5-lts.1",
+      "nodes": ["node_modules/multer"],
+      "fixAvailable": {
+        "name": "multer",
+        "version": "1.4.5-lts.1",
+        "isSemVerMajor": false
+      }
+    },
+    "mongoose": {
+      "name": "mongoose",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [

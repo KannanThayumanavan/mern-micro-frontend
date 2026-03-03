@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "report_id": "snyk-report-SCRUM-29",
+    "generated_at": "2024-01-15T08:00:00.000Z",
+    "tool": "snyk",
+    "tool_version": "1.1234.0",
+    "project_name": "enterprise-app",
+    "project_url": "https://github.com/org/enterprise-app",
+    "jira_ticket": "SCRUM-29",
+    "scan_type": "open-source",
+    "severity_threshold": "low",
+    "total_vulnerabilities": 47,
+    "unique_vulnerabilities": 31,
+    "fixable_vulnerabilities": 38,
+    "unfixable_vulnerabilities": 9,
+    "summary": {
+      "critical": 4,
+      "high": 12,
+      "medium": 18,
+      "low": 13
+    }
+  },
+  "solution_approach": "Risk-stratified, iterative security remediation following a Defense-in-Depth pattern. The approach layers three distinct remediation tracks — (1) dependency supply-chain patching, (2) runtime configuration hardening, and (3) authentication/cryptography uplift — executed in severity-descending order with mandatory validation gates between phases. No single 'big bang' upgrade; instead, atomic, reviewable changesets per severity tier allow rapid rollback isolation. A trunk-based branching strategy (feature/SCRUM-29-phase-N) ensures each phase is independently mergeable and revertible. The overall design pattern is 'Secure by Default': every middleware, configuration, and dependency default is shifted to the most restrictive safe setting, with explicit opt-outs documented and justified.",
+  "implementation_plan": [
+    {
+      "step": 1,
+      "title": "Branch Setup",
+      "description": "Create base branch 'feature/SCRUM-29' from main. Create sub-branches per phase: feature/SCRUM-29-phase-1, feature/SCRUM-29-phase-2, feature/SCRUM-29-phase-3.",
+      "commands": [
+        "git checkout main && git pull",
+        "git checkout -b feature/SCRUM-29",
+        "git checkout -b feature/SCRUM-29-phase-1",
+        "git checkout -b feature/SCRUM-29-phase-2",
+        "git checkout -b feature/SCRUM-29-phase-3"
+      ]
+    },
+    {
+      "step": 2,
+      "title": "Phase 1 — Critical & High Dependency Patching",
+      "description": "Upgrade all critical and high severity vulnerable dependencies to patched versions. Run snyk test after each upgrade to confirm resolution.",
+      "phase": "phase-1",
+      "severity_targets": ["critical", "high"],
+      "validation_gate": "snyk test --severity-threshold=high must return 0 vulnerabilities before merge"
+    },
+    {
+      "step": 3,
+      "title": "Phase 2 — Runtime Configuration Hardening",
+      "description": "Apply Helmet.js headers, CSP policies, rate limiting, and secure cookie flags. Harden all middleware defaults.",
+      "phase": "phase-2",
+      "severity_targets": ["medium"],
+      "validation_gate": "OWASP ZAP baseline scan must pass before merge"
+    },
+    {
+      "step": 4,
+      "title": "Phase 3 — Authentication & Cryptography Uplift",
+      "description": "Rotate secrets, enforce bcrypt cost factor >= 12, migrate JWT to RS256, enforce TLS 1.2+ only.",
+      "phase": "phase-3",
+      "severity_targets": ["low"],
+      "validation_gate": "Penetration test sign-off required before merge to main"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "id": "SNYK-JS-LODASH-567746",
+      "cve": "CVE-2019-10744",
+      "cwe": "CWE-471",
+      "title": "Prototype Pollution",
+      "severity": "critical",
+      "cvss_score": 9.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "package": "lodash",
+      "vulnerable_versions": "<4.17.12",
+      "patched_version": "4.17.21",
+      "current_version": "4.17.11",
+      "exploit_maturity": "proof-of-concept",
+      "is_fixable": true,
+      "fix_type": "upgradable",
+      "remediation": {
+        "action": "upgrade",
+        "target_version": "4.17.21",
+        "command": "npm install lodash@4.17.21"
+      },
+      "paths": [
+        "express-app > lodash",
+        "express-app > body-parser > lodash"
+      ],
+      "description": "Versions of lodash prior to 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-10744",
+        "https://snyk.io/vuln/SNYK-JS-LODASH-567746",
+        "https://github.com/lodash/lodash/pull/4336"
+      ],
+      "disclosure_date": "2019-07-26",
+      "phase": "phase-1"
+    },
+    {
+      "id": "SNYK-JS-AXIOS-1579269",
+      "cve": "CVE-2021-3749",
+      "cwe": "CWE-400",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "severity": "high",
+      "cvss_score": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "package": "axios",
+      "vulnerable_versions": "<0.21.2",
+      "patched_version": "0.21.2",
+      "current_version": "0.21.1",
+      "exploit_maturity": "proof-of-concept",
+      "is_fixable": true,
+      "fix_type": "upgradable",
+      "remediation": {
+        "action": "upgrade",
+        "target_version": "1.6.8",
+        "command": "npm install axios@1.6.8"
+      },
+      "paths": [
+        "express-app > axios"
+      ],
+      "description": "axios is vulnerable to Inefficient Regular Expression Complexity which could lead to a denial of service attack.",
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2021-3749",
+        "https://snyk.io/vuln/SNYK-JS-AXIOS-1579269",
+        "https://github.com/axios/axios/releases/tag/v0.21.2"
+      ],
+      "disclosure_date": "2021-08-31",
+      "phase": "phase-1"
+    },
+    {
+      "id": "SNYK-JS-JSONWEBTOKEN-3180026",
+      "cve": "CVE-2022-23529",
+      "cwe": "CWE-20",
+      "title": "Improper Input Validation",
+      "severity": "critical",
+      "cvss_score": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "package": "jsonwebtoken",
+      "vulnerable_versions": "<9.0.0",
