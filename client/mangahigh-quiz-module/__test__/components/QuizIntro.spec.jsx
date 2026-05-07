@@ -2,13 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import QuizIntro from '../../src/components/QuizIntro';
 
-jest.mock('mangahigh-libs/react', () => jest.requireActual('react'),
-	{ virtual: true }
-);
-
-jest.mock('mangahigh-components/Button', () => 'Button',	
-{ virtual: true });
-
 describe('Test QuizIntro Component', () => {
 	const mockCallback = jest.fn();
 	const props = {

@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'mangahigh-libs/react';
-import Button from 'mangahigh-components/Button';
+import React, { Fragment, useEffect, useState } from 'react';
+import Button from '../../../../mangahigh-components/src/components/Button';
 import { calculateResult } from '../utils/utils';
 import PropTypes from 'prop-types';
 

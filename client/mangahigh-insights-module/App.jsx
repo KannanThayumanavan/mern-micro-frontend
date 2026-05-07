@@ -1,4 +1,4 @@
-import React from 'mangahigh-libs/react';
+import React from 'react';
 import Insights from './src/Insights';
 import css from'./src/styles/bootstrap.min.css';
 

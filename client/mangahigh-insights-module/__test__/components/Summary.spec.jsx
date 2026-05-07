@@ -2,13 +2,6 @@ import React from 'react';
 import {shallow } from 'enzyme';
 import Summary from '../../src/components/Summary';
 
-jest.mock('mangahigh-libs/react', () => jest.requireActual('react'),
-	{ virtual: true }
-);
-
-jest.mock('mangahigh-components/DisplayCard', () => () => 'DisplayCard'			
-, { virtual: true });
-
 describe('Test Summary Component', () => {
 	const attempts = [
 		{

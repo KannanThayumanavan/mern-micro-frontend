@@ -6,16 +6,6 @@ import { act } from "react-dom/test-utils";
 
 jest.mock('axios');
 
-jest.mock('mangahigh-libs/react', () => jest.requireActual('react'),
-	{ virtual: true }
-);
-
-jest.mock('mangahigh-components/DisplayCard', () => () => 'DisplayCard'			
-, { virtual: true });
-
-jest.mock('mangahigh-components/Table', () => () => 'Table'			
-, { virtual: true });
-
 const response = {
 	data: [
 		{
