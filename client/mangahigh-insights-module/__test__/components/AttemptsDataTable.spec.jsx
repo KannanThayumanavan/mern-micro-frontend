@@ -2,13 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import AttemptsDataTable from '../../src/components/AttemptsDataTable';
 
-jest.mock('mangahigh-libs/react', () => jest.requireActual('react'),
-	{ virtual: true }
-);
-
-jest.mock('mangahigh-components/Table', () => () => 'Table'			
-, { virtual: true });
-
 describe('Test AttemptsDataTable Component', () => {
 	const attempts = [
 		{

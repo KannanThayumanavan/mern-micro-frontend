@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'mangahigh-libs/react';
+import React, { useState, useEffect } from 'react';
 import QuizIntro from './components/QuizIntro';
 import Question from './components/Question';
 import Result from './components/Result';

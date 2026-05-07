@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'mangahigh-libs/react';
+import React, { useEffect, useState } from 'react';
 import Summary from './components/Summary';
 import AttemptsDataTable from './components/AttemptsDataTable';
 import axios from 'axios';

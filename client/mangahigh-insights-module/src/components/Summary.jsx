@@ -1,5 +1,5 @@
-import React from 'mangahigh-libs/react';
-import DisplayCard from 'mangahigh-components/DisplayCard';
+import React from 'react';
+import DisplayCard from '../../../mangahigh-components/src/components/DisplayCard';
 import PropTypes from 'prop-types';
 
 const calculateAverage = (attempts) => attempts

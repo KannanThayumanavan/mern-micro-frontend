@@ -1,5 +1,5 @@
-import React from 'mangahigh-libs/react';
-import Table from 'mangahigh-components/Table';
+import React from 'react';
+import Table from '../../../mangahigh-components/src/components/Table';
 import PropTypes from 'prop-types';
 
 const populateRowsToDisplay = (attempts) => attempts.map((attempt, index) => [

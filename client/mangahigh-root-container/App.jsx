@@ -1,10 +1,10 @@
-import React from "mangahigh-libs/react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-} from "mangahigh-libs/react-router-dom";
+} from "react-router-dom";
 import InsightsComponent from "mangahigh-insights-module/App";
 import QuizComponent from "mangahigh-quiz-module/App";
 

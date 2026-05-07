@@ -5,16 +5,6 @@ import axios from "axios";
 import { act } from "react-dom/test-utils";
 jest.mock('axios');
 
-jest.mock('mangahigh-libs/react', () => jest.requireActual('react'),
-	{ virtual: true }
-);
-
-jest.mock('mangahigh-components/Button', () => () => 'Button'			
-, { virtual: true });
-
-jest.mock('mangahigh-components/MultiOptions', () => () => 'MultiOptions'			
-, { virtual: true });
-
 const response = {
 	"data": [{
 		"_id":"test_id",

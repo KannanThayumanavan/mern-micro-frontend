@@ -1,5 +1,5 @@
-import React from 'mangahigh-libs/react';
-import Button from 'mangahigh-components/Button';
+import React from 'react';
+import Button from '../../../../mangahigh-components/src/components/Button';
 import PropTypes from 'prop-types';
 
 const QuizIntro = ({ introHeader, updateProgress }) => (

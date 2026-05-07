@@ -1,6 +1,6 @@
-import React from 'mangahigh-libs/react';
-import Button from 'mangahigh-components/Button';
-import MultiOptions from 'mangahigh-components/MultiOptions';
+import React from 'react';
+import Button from '../../../../mangahigh-components/src/components/Button';
+import MultiOptions from '../../../../mangahigh-components/src/components/MultiOptions';
 import PropTypes from 'prop-types';
 
 const Question = ({ 
